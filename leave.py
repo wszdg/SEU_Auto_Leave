@@ -118,7 +118,7 @@ class Leave(object):
             self.header['Content-Type'] = 'application/x-www-form-urlencoded;charset=utf-8'
             now_time = datetime.datetime.now()
             data = datas
-            if now_time.strftime("%Y-%m-%d") not in data['QJKSRQ'] and (now_time + datetime.timedelta(days=+1)).strftime(
+            if (now_time + datetime.timedelta(days=+1)).strftime(
                     "%Y-%m-%d") not in data['QJKSRQ']:
                 print("销假: ", data["QJKSRQ"])
                 post_info = {"requestParamStr": {"SQBH": data["SQBH"]}}
@@ -133,7 +133,7 @@ class Leave(object):
             self.header['Content-Type'] = 'application/x-www-form-urlencoded;charset=utf-8'
             for data in datas:
                 now_time = datetime.datetime.now()
-                if now_time.strftime("%Y-%m-%d") not in data['QJKSRQ'] and (now_time + datetime.timedelta(days=+1)).strftime(
+                if (now_time + datetime.timedelta(days=+1)).strftime(
                         "%Y-%m-%d") not in data['QJKSRQ']:
                     print("销假: ", data["QJKSRQ"])
                     post_info = {
