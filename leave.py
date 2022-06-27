@@ -118,7 +118,7 @@ class Leave(object):
             self.header['Content-Type'] = 'application/x-www-form-urlencoded;charset=utf-8'
             now_time = datetime.datetime.now()
             data = datas
-            if now_time.strftime("%Y-%m-%d") not in data['QJKSRQ']:
+            if now_time.strftime("%Y-%m-%d") in data['QJKSRQ']:
                 print("销假: ", data["QJKSRQ"])
                 post_info = {"requestParamStr": {"SQBH": data["SQBH"]}}
                 data = parse.urlencode(post_info)
@@ -132,7 +132,7 @@ class Leave(object):
             self.header['Content-Type'] = 'application/x-www-form-urlencoded;charset=utf-8'
             for data in datas:
                 now_time = datetime.datetime.now()
-                if now_time.strftime("%Y-%m-%d") not in data['QJKSRQ']:
+                if now_time.strftime("%Y-%m-%d") in data['QJKSRQ']:
                     print("销假: ", data["QJKSRQ"])
                     post_info = {
                         "data": {"SQBH": "", "XSBH": 0, "SHZT": "99", "XJFS": "2",
@@ -252,8 +252,8 @@ class Leave(object):
             post_info['XXDZ'] = "去无线谷科研"
         post_info['SQBH'] = ''
         now_time = datetime.datetime.now()
-        post_info["QJKSRQ"] = (now_time + datetime.timedelta(days=+1)).strftime("%Y-%m-%d 06:00")
-        post_info["QJJSRQ"] = (now_time + datetime.timedelta(days=+1)).strftime("%Y-%m-%d 23:59")
+        post_info["QJKSRQ"] = (now_time + datetime.timedelta(days=+1)).strftime("%Y-%m-%d 10:00")
+        post_info["QJJSRQ"] = (now_time + datetime.timedelta(days=+1)).strftime("%Y-%m-%d 20:59")
 
         save_url = self.urlBegin + 'modules/leaveApply/addLeaveApply.do'
         self.header['Content-Type'] = 'application/x-www-form-urlencoded;charset=utf-8'
